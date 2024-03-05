@@ -1,1 +1,2 @@
 # ShocketPSP
+Aceptada la invitación
