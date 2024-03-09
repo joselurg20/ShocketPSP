@@ -1,15 +1,16 @@
 package com.example.socketpsp;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.socketpsp.DAO.ArdillaDAO;
 import com.example.socketpsp.DAO.PoemaDAO;
+import com.example.socketpsp.Menu;
+import com.example.socketpsp.Register;
 import com.example.socketpsp.conexiones.ClienteSocket;
 import com.example.socketpsp.model.Ardilla;
 import com.example.socketpsp.model.Poema;
@@ -36,13 +37,21 @@ public class MainActivity extends AppCompatActivity {
         btnInicio = findViewById(R.id.btn_inicio);
 
         // Configurar OnClickListener para el botón de Registro
-        btnRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Register.class);
-            startActivity(intent);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
+            }
         });
 
         // Configurar OnClickListener para el botón de Inicio de Sesión
-        btnInicio.setOnClickListener(v -> iniciarSesion());
+        btnInicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iniciarSesion();
+            }
+        });
 
         crearPoemasIniciales();
     }
@@ -62,14 +71,9 @@ public class MainActivity extends AppCompatActivity {
             poemaDAO.insertPoema(poema);
         }
 
-        // Registrar un mensaje de log indicando que los poemas se han creado exitosamente
-        Log.d("MainActivity", "Poemas creados exitosamente");
-
         // Cerrar la conexión a la base de datos
         poemaDAO.close();
     }
-
-
 
     @Override
     protected void onDestroy() {
@@ -89,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         ClienteSocket clienteSocket = new ClienteSocket(correo, password);
         clienteSocket.enviarCredenciales();
 
-
         if (ardilla != null) {
             // Las credenciales son válidas, iniciar sesión y abrir el menú principal
             Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
@@ -103,5 +106,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Correo electrónico o contraseña incorrectos", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

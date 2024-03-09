@@ -37,5 +37,15 @@ public class ClienteSocket {
         }).start();
     }
 
-    // Resto del código...
+    // Método para enviar otros datos al servidor, si es necesario
+    // public void enviarDatos(Object datos) {
+    //     try {
+    //         out.writeObject(datos);
+    //         out.flush();
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
+
+    // Resto del código, como métodos para recibir datos del servidor, cerrar conexiones, etc.
 }

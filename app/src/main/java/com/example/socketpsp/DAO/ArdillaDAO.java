@@ -95,4 +95,16 @@ public class ArdillaDAO {
         return ardilla;
     }
 
+    public void actualizarPuntosArdilla(String nombreArdilla, int numeroPuntos) {
+        ContentValues values = new ContentValues();
+        values.put("puntos", numeroPuntos);
+
+        // Definir la condición WHERE para actualizar la ardilla por nombre
+        String whereClause = "nombre = ?";
+        String[] whereArgs = {nombreArdilla};
+
+        // Actualizar los puntos de la ardilla en la base de datos
+        database.update("ardilla", values, whereClause, whereArgs);
+    }
+
 }
