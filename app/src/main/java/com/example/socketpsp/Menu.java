@@ -33,6 +33,14 @@ public class Menu extends AppCompatActivity {
         txtNumeroPoemas = findViewById(R.id.txt_numeropoemas);
         txtNumeroPuntos = findViewById(R.id.txt_numeropuntos);
 
+        Intent intent = getIntent();
+        String nombreArdilla = intent.getStringExtra("nombreArdilla");
+        int numeroPuntos = intent.getIntExtra("numeroPuntos", 0);
+
+        // Mostrar los datos de la ardilla en los TextViews correspondientes
+        txtNombreArdilla.setText(nombreArdilla);
+        txtNumeroPuntos.setText(String.valueOf(numeroPuntos));
+
         // Configurar OnClickListener para el botón Ir a tienda
         btnIrTienda.setOnClickListener(new View.OnClickListener() {
             @Override

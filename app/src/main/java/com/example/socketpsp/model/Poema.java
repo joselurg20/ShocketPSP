@@ -15,6 +15,12 @@ public class Poema implements Serializable {
         this.puntos = puntos;
     }
 
+    public Poema(String titulo, String contenido, int puntos) {
+        this.titulo = titulo;
+        this.contenido = contenido;
+        this.puntos = puntos;
+    }
+
     public Poema(){
         this.id = -1;
         this.titulo = "";

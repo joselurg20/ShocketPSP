@@ -1,9 +1,12 @@
 package com.example.socketpsp;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.socketpsp.DAO.ArdillaDAO;
@@ -33,6 +36,16 @@ public class Register extends AppCompatActivity {
 
         // Configurar el evento click del botón de registro
         btnRegister.setOnClickListener(v -> registrarArdilla());
+
+        ImageView imgVolver = findViewById(R.id.img_volver);
+        imgVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear intent para ir a la actividad Register
+                Intent intent = new Intent(Register.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
