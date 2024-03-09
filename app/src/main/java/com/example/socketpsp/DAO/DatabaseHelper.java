@@ -9,8 +9,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Sentencias SQL para crear las tablas
-    private static final String CREATE_TABLE_ARDILLA = "CREATE TABLE ardilla (id INTEGER PRIMARY KEY, dni TEXT, email TEXT, password TEXT, nombre TEXT, puntos INTEGER)";
-    private static final String CREATE_TABLE_POEMA = "CREATE TABLE poema (id INTEGER PRIMARY KEY, titulo TEXT, contenido TEXT, puntos INTEGER)";
+    private static final String CREATE_TABLE_ARDILLA = "CREATE TABLE ardilla (id INTEGER PRIMARY KEY AUTOINCREMENT, dni TEXT, email TEXT, password TEXT, nombre TEXT, puntos INTEGER)";
+    private static final String CREATE_TABLE_POEMA = "CREATE TABLE poema (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, contenido TEXT, puntos INTEGER)";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

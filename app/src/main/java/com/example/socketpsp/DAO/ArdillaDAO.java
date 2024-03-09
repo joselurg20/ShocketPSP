@@ -30,7 +30,6 @@ public class ArdillaDAO {
 
     public long insertArdilla(Ardilla ardilla) {
         ContentValues values = new ContentValues();
-        values.put("id", ardilla.getId());
         values.put("dni", ardilla.getDni());
         values.put("email", ardilla.getEmail());
         values.put("password", ardilla.getPassword());

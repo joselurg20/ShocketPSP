@@ -22,6 +22,15 @@ public class Ardilla {
         this.puntos = puntos;
     }
 
+    // Constructor con parámetros para crear una instancia de Ardilla
+    public Ardilla(String dni, String email, String password, String nombre, int puntos) {
+        this.dni = dni;
+        this.email = email;
+        this.password = password;
+        this.nombre = nombre;
+        this.puntos = puntos;
+    }
+
     // Getters y setters para todos los campos de Ardilla
 
     public int getId() {
