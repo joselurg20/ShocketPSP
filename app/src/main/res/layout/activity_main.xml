@@ -38,7 +38,7 @@
         app:srcCompat="@drawable/img" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/txt_correo"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/et_style"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.61" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/txt_password"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/et_style"
@@ -75,16 +75,16 @@
         android:id="@+id/lock"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_password"
+        app:layout_constraintEnd_toEndOf="@+id/txt_password"
         app:layout_constraintHorizontal_bias="0.972"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/txt_password"
+        app:layout_constraintTop_toTopOf="@+id/txt_password"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@mipmap/ic_launcher_background" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btn_register"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:backgroundTint="#401A36"
@@ -100,7 +100,7 @@
         app:layout_constraintVertical_bias="0.936" />
 
     <Button
-        android:id="@+id/btnRegistrer"
+        android:id="@+id/btn_inicio"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:backgroundTint="#401A36"
@@ -119,11 +119,11 @@
         android:id="@+id/imageView6"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_correo"
+        app:layout_constraintEnd_toEndOf="@+id/txt_correo"
         app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        app:layout_constraintTop_toTopOf="@+id/editTextText"
+        app:layout_constraintStart_toStartOf="@+id/txt_correo"
+        app:layout_constraintTop_toTopOf="@+id/txt_correo"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/correo" />
 

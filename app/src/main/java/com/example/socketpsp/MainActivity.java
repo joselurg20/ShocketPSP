@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btn_register);
 
         // Configura un OnClickListener para el botón de inicio de sesión
         btnLogin.setOnClickListener(new View.OnClickListener() {

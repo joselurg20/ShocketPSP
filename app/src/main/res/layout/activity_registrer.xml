@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.092" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btn_register"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:backgroundTint="#401A36"
@@ -42,13 +42,13 @@
         app:layout_constraintVertical_bias="0.825" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/txt_nombre"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/et_style"
         android:backgroundTint="#D9D4C5"
         android:ems="10"
-        android:hint="Nombre de usuario"
+        android:hint="Nombre de ardilla"
         android:inputType="text"
         android:textColorHint="#777676"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,13 +59,13 @@
         app:layout_constraintVertical_bias="0.419" />
 
     <EditText
-        android:id="@+id/dni"
+        android:id="@+id/txt_dni"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/et_style"
         android:backgroundTint="#D9D4C5"
         android:ems="10"
-        android:hint="Dni del usuario"
+        android:hint="Dni del ardilla"
         android:inputType="text"
         android:textColorHint="#777676"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.301" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/txt_password"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/et_style"
@@ -93,13 +93,13 @@
         app:layout_constraintVertical_bias="0.662" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/txt_correo"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/et_style"
         android:backgroundTint="#D9D4C5"
         android:ems="10"
-        android:hint="Correo Electronico"
+        android:hint="Correo Electrónico"
         android:inputType="text"
         android:textColorHint="#777676"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,11 +113,11 @@
         android:id="@+id/lock"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_password"
+        app:layout_constraintEnd_toEndOf="@+id/txt_password"
         app:layout_constraintHorizontal_bias="0.972"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/txt_password"
+        app:layout_constraintTop_toTopOf="@+id/txt_password"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@mipmap/ic_launcher_background" />
 
@@ -125,11 +125,11 @@
         android:id="@+id/imageView6"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_correo"
+        app:layout_constraintEnd_toEndOf="@+id/txt_correo"
         app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        app:layout_constraintTop_toTopOf="@+id/editTextText"
+        app:layout_constraintStart_toStartOf="@+id/txt_correo"
+        app:layout_constraintTop_toTopOf="@+id/txt_correo"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/correo" />
 
@@ -137,16 +137,16 @@
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/dni"
-        app:layout_constraintEnd_toEndOf="@+id/dni"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_dni"
+        app:layout_constraintEnd_toEndOf="@+id/txt_dni"
         app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="@+id/dni"
-        app:layout_constraintTop_toTopOf="@+id/dni"
+        app:layout_constraintStart_toStartOf="@+id/txt_dni"
+        app:layout_constraintTop_toTopOf="@+id/txt_dni"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/id" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_volver"
         android:layout_width="86dp"
         android:layout_height="96dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,11 +161,11 @@
         android:id="@+id/imageView3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/userName"
-        app:layout_constraintEnd_toEndOf="@+id/userName"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_nombre"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nombre"
         app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="@+id/userName"
-        app:layout_constraintTop_toTopOf="@+id/userName"
+        app:layout_constraintStart_toStartOf="@+id/txt_nombre"
+        app:layout_constraintTop_toTopOf="@+id/txt_nombre"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/usuario" />
 
