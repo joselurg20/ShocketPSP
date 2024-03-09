@@ -58,9 +58,20 @@ public class Menu extends AppCompatActivity {
                 // Obtener un poema aleatorio de la base de datos
                 Poema poema = obtenerPoemaAleatorio();
 
-                // Actualizar el número de poemas recolectados y los puntos de la ardilla
-                int numeroPoemas = Integer.parseInt(txtNumeroPoemas.getText().toString()) + 1;
-                int numeroPuntos = Integer.parseInt(txtNumeroPuntos.getText().toString()) + poema.getPuntos();
+                // Obtener el texto de los TextViews y verificar si están vacíos
+                String textoNumeroPoemas = txtNumeroPoemas.getText().toString();
+                String textoNumeroPuntos = txtNumeroPuntos.getText().toString();
+
+                int numeroPoemas = 0;
+                int numeroPuntos = 0;
+
+                if (!textoNumeroPoemas.isEmpty()) {
+                    numeroPoemas = Integer.parseInt(textoNumeroPoemas) + 1;
+                }
+
+                if (!textoNumeroPuntos.isEmpty()) {
+                    numeroPuntos = Integer.parseInt(textoNumeroPuntos) + poema.getPuntos();
+                }
 
                 // Actualizar los puntos de la ardilla en la base de datos
                 ArdillaDAO ardillaDAO = new ArdillaDAO(Menu.this);
@@ -73,6 +84,7 @@ public class Menu extends AppCompatActivity {
                 txtNumeroPuntos.setText(String.valueOf(numeroPuntos));
             }
         });
+
 
         // Configurar OnClickListener para el botón Ir a tienda
         btnIrTienda.setOnClickListener(new View.OnClickListener() {

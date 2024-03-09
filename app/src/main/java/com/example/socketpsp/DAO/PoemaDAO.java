@@ -30,7 +30,6 @@ public class PoemaDAO {
 
     public long insertPoema(Poema poema) {
         ContentValues values = new ContentValues();
-        values.put("id", poema.getId());
         values.put("titulo", poema.getTitulo());
         values.put("contenido", poema.getContenido());
         values.put("puntos", poema.getPuntos());
