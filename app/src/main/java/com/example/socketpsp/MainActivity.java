@@ -9,29 +9,35 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-   private Button btnLogin;
+    private Button btnRegister;
+    private Button btnInicio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogin = findViewById(R.id.btn_register);
+        // Inicializar los botones
+        btnRegister = findViewById(R.id.btn_register);
+        btnInicio = findViewById(R.id.btn_inicio);
 
-        // Configura un OnClickListener para el botón de inicio de sesión
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        // Configurar OnClickListener para el botón de Registro
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Método llamado cuando se hace clic en el botón
-                navigateToMainActivity(); // Método para iniciar la actividad MainActivity
+                Intent intent = new Intent(MainActivity.this, Registrer.class);
+                startActivity(intent);
+            }
+        });
+
+        btnInicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Menu.class);
+                startActivity(intent);
             }
         });
     }
 
 
-    private void navigateToMainActivity() {
-        // Crea un Intent para iniciar la actividad MainActivity
-        Intent intent = new Intent(this, Registrer.class);
-        startActivity(intent); // Inicia la actividad
-    }
 }

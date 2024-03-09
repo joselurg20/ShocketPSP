@@ -1,6 +1,8 @@
 package com.example.socketpsp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,5 +32,28 @@ public class Menu extends AppCompatActivity {
         txtNombreArdilla = findViewById(R.id.txt_nombreardilla);
         txtNumeroPoemas = findViewById(R.id.txt_numeropoemas);
         txtNumeroPuntos = findViewById(R.id.txt_numeropuntos);
+
+        // Configurar OnClickListener para el botón Ir a tienda
+        btnIrTienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Aquí iniciamos la actividad 'activity_tienda'
+                Intent intent = new Intent(Menu.this, Tienda.class);
+                startActivity(intent);
+            }
+        });
+
+        btnIrDescansar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Aquí iniciamos la actividad MainActivity
+                Intent intent = new Intent(Menu.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
+
 }
