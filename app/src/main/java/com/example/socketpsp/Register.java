@@ -1,33 +1,28 @@
 package com.example.socketpsp;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.socketpsp.R;
+import com.example.socketpsp.DAO.ArdillaDAO;
 import com.example.socketpsp.model.Ardilla;
-import com.example.socketpsp.service.ApiService;
-import com.example.socketpsp.service.RetrofitClient;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
 
     private EditText txtNombre, txtDni, txtCorreo, txtPassword;
     private Button btnRegister;
-    private ApiService apiService;
+    private ArdillaDAO ardillaDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrer);
+
+        // Inicializar ArdillaDAO
+        ardillaDAO = new ArdillaDAO(this);
+        ardillaDAO.open();
 
         // Inicializar los EditText y el Button
         txtNombre = findViewById(R.id.txt_nombre);
@@ -36,49 +31,38 @@ public class Register extends AppCompatActivity {
         txtPassword = findViewById(R.id.txt_password);
         btnRegister = findViewById(R.id.btn_register);
 
-        // Inicializar ApiService utilizando Retrofit
-        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
-
         // Configurar el evento click del botón de registro
         btnRegister.setOnClickListener(v -> registrarArdilla());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ardillaDAO.close(); // Cerrar la conexión a la base de datos al destruir la actividad
+    }
 
-    // Luego, puedes llamar a esta función en tu método registrarArdilla()
     private void registrarArdilla() {
         // Obtener los datos de los EditText
         String nombre = txtNombre.getText().toString();
         String dni = txtDni.getText().toString();
         String correo = txtCorreo.getText().toString();
         String password = txtPassword.getText().toString();
-
-
         int puntos = 0;
-        int id = 0;
 
+        // Crear un objeto Ardilla
+        Ardilla ardilla = new Ardilla(0, dni, correo, password, nombre, puntos);
 
-        Ardilla ardilla = new Ardilla(id, nombre, dni, correo, password, puntos);
+        // Insertar la ardilla en la base de datos
+        long resultado = ardillaDAO.insertArdilla(ardilla);
 
-        // Llamar al método createOrUpdateArdilla de ApiService para crear la ardilla
-        Call<Ardilla> call = apiService.createOrUpdateArdilla(ardilla);
-        call.enqueue(new Callback<Ardilla>() {
-            @Override
-            public void onResponse(Call<Ardilla> call, Response<Ardilla> response) {
-                if (response.isSuccessful()) {
-                    // La ardilla se creó correctamente
-                    Toast.makeText(Register.this, "Ardilla creada correctamente", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Hubo un error al crear la ardilla
-                    Toast.makeText(Register.this, "Error al crear la ardilla", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Ardilla> call, Throwable t) {
-                // Manejar el error de la solicitud
-                Toast.makeText(Register.this, "Error de conexión", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (resultado != -1) {
+            // La ardilla se insertó correctamente
+            Toast.makeText(this, "Ardilla registrada correctamente", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Register.this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            // Ocurrió un error al insertar la ardilla
+            Toast.makeText(this, "Error al registrar la ardilla", Toast.LENGTH_SHORT).show();
+        }
     }
-
 }
