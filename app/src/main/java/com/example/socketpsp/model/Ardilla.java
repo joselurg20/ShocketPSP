@@ -4,17 +4,26 @@ import java.io.Serializable;
 
 public class Ardilla implements Serializable {
     private int id;
+
+    private String email;
+
+    private String password;
+
     private String nombre;
     private int puntos;
 
-    public Ardilla(int id, String nombre, int puntos) {
+    public Ardilla(int id, String email, String password, String nombre, int puntos) {
         this.id = id;
+        this.email = email;
+        this.password = password;
         this.nombre = nombre;
         this.puntos = puntos;
     }
 
     public Ardilla() {
         this.id = -1;
+        this.email= "";
+        this.password = "";
         this.nombre = "";
         this.puntos = -1;
     }
@@ -25,6 +34,22 @@ public class Ardilla implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNombre() {
@@ -47,6 +72,7 @@ public class Ardilla implements Serializable {
     public String toString() {
         return "Ardilla{" +
                 "id=" + id +
+                ", email='" + email + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", puntos=" + puntos +
                 '}';
