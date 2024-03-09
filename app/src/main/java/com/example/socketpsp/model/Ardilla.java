@@ -1,8 +1,6 @@
 package com.example.socketpsp.model;
 
-import java.io.Serializable;
-
-public class Ardilla implements Serializable {
+public class Ardilla {
     private int id;
     private String dni;
     private String email;
@@ -10,7 +8,12 @@ public class Ardilla implements Serializable {
     private String nombre;
     private int puntos;
 
-    public Ardilla(int id,String dni, String email, String password, String nombre, int puntos) {
+    // Constructor vacío necesario para Retrofit
+    public Ardilla() {
+    }
+
+    // Constructor con parámetros para crear una instancia de Ardilla
+    public Ardilla(int id, String dni, String email, String password, String nombre, int puntos) {
         this.id = id;
         this.dni = dni;
         this.email = email;
@@ -19,14 +22,7 @@ public class Ardilla implements Serializable {
         this.puntos = puntos;
     }
 
-    public Ardilla() {
-        this.id = -1;
-        this.dni= "";
-        this.email= "";
-        this.password = "";
-        this.nombre = "";
-        this.puntos = -1;
-    }
+    // Getters y setters para todos los campos de Ardilla
 
     public int getId() {
         return id;
@@ -74,16 +70,5 @@ public class Ardilla implements Serializable {
 
     public void setPuntos(int puntos) {
         this.puntos = puntos;
-    }
-
-    @Override
-    public String toString() {
-        return "Ardilla{" +
-                "id=" + id +
-                ", dni='" + dni + '\'' +
-                ", email='" + email + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", puntos=" + puntos +
-                '}';
     }
 }
