@@ -23,7 +23,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.ardilla_menu);
 
         // Asociar las variables con los elementos de la vista
-        textView = findViewById(R.id.textView);
+        textView = findViewById(R.id.textView1);
         btnIrTienda = findViewById(R.id.btn_irtienda);
         btnIrPoema = findViewById(R.id.btn_irpoema);
         btnIrDescansar = findViewById(R.id.btn_irdecansar);
