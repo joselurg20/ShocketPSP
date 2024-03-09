@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.socketpsp.DAO.ArdillaDAO;
 import com.example.socketpsp.DAO.PoemaDAO;
+import com.example.socketpsp.conexiones.ClienteSocket;
 import com.example.socketpsp.model.Ardilla;
 import com.example.socketpsp.model.Poema;
 
@@ -83,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Consultar la base de datos para verificar las credenciales
         Ardilla ardilla = ardillaDAO.getArdillaByEmailAndPassword(correo, password);
+
+        // Iniciar la conexión con el servidor y enviar los datos de inicio de sesión
+        ClienteSocket clienteSocket = new ClienteSocket(correo, password);
+        clienteSocket.enviarCredenciales();
+
 
         if (ardilla != null) {
             // Las credenciales son válidas, iniciar sesión y abrir el menú principal
