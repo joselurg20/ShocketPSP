@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#261020">
@@ -44,6 +45,7 @@
                     android:padding="16dp">
 
                     <ImageView
+                        android:id="@+id/img_1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
@@ -86,6 +88,7 @@
                     android:padding="16dp">
 
                     <ImageView
+                        android:id="@+id/img_2"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
@@ -126,6 +129,7 @@
                     android:padding="16dp">
 
                     <ImageView
+                        android:id="@+id/img_3"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
@@ -167,6 +171,7 @@
                     android:padding="16dp">
 
                     <ImageView
+                        android:id="@+id/img_4"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
@@ -207,6 +212,7 @@
                     android:padding="16dp">
 
                     <ImageView
+                        android:id="@+id/img_5"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
@@ -247,6 +253,7 @@
                     android:padding="16dp">
 
                     <ImageView
+                        android:id="@+id/img_6"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="centerCrop"
@@ -275,4 +282,24 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#401A36"
+        android:text="Buy"
+        android:textColor="#D9D4C5"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="8dp" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#401A36"
+        android:text="Back"
+        android:textColor="#D9D4C5"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="8dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
