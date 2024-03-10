@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnRegister, btnInicio;
     private ArdillaDAO ardillaDAO;
 
+    private ClienteSocket clienteSocket;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,19 +90,40 @@ public class MainActivity extends AppCompatActivity {
 
         // Consultar la base de datos para verificar las credenciales
         Ardilla ardilla = ardillaDAO.getArdillaByEmailAndPassword(correo, password);
-        
 
-        if (ardilla != null) {
-            // Las credenciales son válidas, iniciar sesión y abrir el menú principal
-            Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, Menu.class);
-            // Pasar datos de la ardilla al intent
-            intent.putExtra("nombreArdilla", ardilla.getNombre());
-            intent.putExtra("numeroPuntos", ardilla.getPuntos());
-            startActivity(intent);
-        } else {
-            // Las credenciales son inválidas, mostrar un mensaje de error
-            Toast.makeText(this, "Correo electrónico o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-        }
+        // Crear una instancia del ClienteSocket
+        clienteSocket = new ClienteSocket();
+
+        // Iniciar sesión en un hilo secundario
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                clienteSocket.iniciarSesion(ardilla);
+
+                // Realizar acciones en el hilo principal después de iniciar sesión
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Verificar si se inició sesión correctamente
+                        if (ardilla != null) {
+                            // Las credenciales son válidas, iniciar sesión y abrir el menú principal
+                            Toast.makeText(MainActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MainActivity.this, Menu.class);
+                            // Pasar datos de la ardilla al intent
+                            intent.putExtra("nombreArdilla", ardilla.getNombre());
+                            intent.putExtra("numeroPuntos", ardilla.getPuntos());
+                            startActivity(intent);
+                        } else {
+                            // Las credenciales son inválidas, mostrar un mensaje de error
+                            Toast.makeText(MainActivity.this, "Correo electrónico o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        }).start();
     }
+
+
+
+
 }
