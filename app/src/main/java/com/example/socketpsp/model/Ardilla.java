@@ -1,6 +1,8 @@
 package com.example.socketpsp.model;
 
-public class Ardilla {
+import java.io.Serializable;
+
+public class Ardilla implements Serializable {
     private int id;
     private String dni;
     private String email;

@@ -1,51 +1,53 @@
 package com.example.socketpsp.conexiones;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.example.socketpsp.model.Ardilla;
+import com.example.socketpsp.model.Poema;
+
+import java.io.*;
 import java.net.Socket;
+import java.util.Map;
 
 public class ClienteSocket {
     private static final String SERVER_ADDRESS = "192.168.1.100"; // Dirección IP del servidor
-    private static final int SERVER_PORT = 8080;
+    private static final int SERVER_PORT = 8081;
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Socket socket;
-    private String correo;
-    private String password;
+    private Ardilla ardilla;
 
-    public ClienteSocket(String correo, String password) {
-        this.correo = correo;
-        this.password = password;
-    }
+    public void iniciarSesion(Ardilla ardilla) {
+        try {
+            socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+            out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream(socket.getInputStream());
 
-    public void enviarCredenciales() {
-        // Ejecutar la operación de conexión en un hilo separado
-        new Thread(() -> {
-            try {
-                socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-                out = new ObjectOutputStream(socket.getOutputStream());
-                in = new ObjectInputStream(socket.getInputStream());
+            // Enviar la ardilla al servidor para iniciar sesión
+            out.writeObject(ardilla);
+            out.flush();
 
-                // Enviar datos de inicio de sesión al servidor
-                out.writeObject(correo);
-                out.writeObject(password);
-                out.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
+            // Recibir la confirmación de inicio de sesión del servidor
+            boolean isLogged = (boolean) in.readObject();
+            if (isLogged) {
+                // Inicio de sesión exitoso
+                System.out.println("Inicio de sesión exitoso");
+            } else {
+                // Inicio de sesión fallido
+                System.out.println("Inicio de sesión fallido");
             }
-        }).start();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    // Método para enviar otros datos al servidor, si es necesario
-    // public void enviarDatos(Object datos) {
-    //     try {
-    //         out.writeObject(datos);
-    //         out.flush();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
+    public void enviarPoema(Poema poema) {
+        try {
+            // Enviar un poema al servidor
+            out.writeObject(poema);
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     // Resto del código, como métodos para recibir datos del servidor, cerrar conexiones, etc.
 }

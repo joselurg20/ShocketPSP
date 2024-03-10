@@ -1,5 +1,6 @@
 package com.example.socketpsp.conexiones;
 
+
 import com.example.socketpsp.model.Ardilla;
 import com.example.socketpsp.model.Poema;
 
@@ -11,8 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 public class Server {
-    private static final int PORT = 8080;
+    private static final int PORT = 8081;
     private static final int MAX_CLIENTS = 100;
 
     // Mapa que mantiene un seguimiento de las conexiones de los clientes (Ardillas) y sus respectivos ObjectOutputStream
@@ -63,6 +65,9 @@ public class Server {
                 // Crea una nueva Ardilla y la agrega al mapa de clientes
                 Ardilla ardilla = new Ardilla();
                 clientes.put(ardilla, outputStream);
+
+                // Mostrar mensaje cuando una ardilla se conecta
+                System.out.println("Ardilla conectada: " + ardilla);
 
             } catch (IOException e) {
                 e.printStackTrace();

@@ -88,10 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Consultar la base de datos para verificar las credenciales
         Ardilla ardilla = ardillaDAO.getArdillaByEmailAndPassword(correo, password);
-
-        // Iniciar la conexión con el servidor y enviar los datos de inicio de sesión
-        ClienteSocket clienteSocket = new ClienteSocket(correo, password);
-        clienteSocket.enviarCredenciales();
+        
 
         if (ardilla != null) {
             // Las credenciales son válidas, iniciar sesión y abrir el menú principal
