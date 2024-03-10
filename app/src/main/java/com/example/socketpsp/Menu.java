@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.socketpsp.DAO.ArdillaDAO;
 import com.example.socketpsp.DAO.PoemaDAO;
+import com.example.socketpsp.MainActivity;
 import com.example.socketpsp.Tienda;
 import com.example.socketpsp.model.Poema;
 import java.util.List;
@@ -25,6 +26,9 @@ public class Menu extends AppCompatActivity {
 
     private List<Poema> listaPoemas;
     private Random random;
+
+    private String nombreArdilla;
+    private int numeroPuntos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,8 @@ public class Menu extends AppCompatActivity {
         txtNumeroPuntos = findViewById(R.id.txt_numeropuntos);
 
         Intent intent = getIntent();
-        String nombreArdilla = intent.getStringExtra("nombreArdilla");
-        int numeroPuntos = intent.getIntExtra("numeroPuntos", 0);
+        nombreArdilla = intent.getStringExtra("nombreArdilla");
+        numeroPuntos = intent.getIntExtra("numeroPuntos", 0);
 
         // Mostrar los datos de la ardilla en los TextViews correspondientes
         txtNombreArdilla.setText(nombreArdilla);
@@ -85,13 +89,14 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-
         // Configurar OnClickListener para el botón Ir a tienda
         btnIrTienda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Aquí iniciamos la actividad 'activity_tienda'
+                // Aquí iniciamos la actividad 'Tienda' y pasamos los datos de la ardilla
                 Intent intent = new Intent(Menu.this, Tienda.class);
+                intent.putExtra("nombreArdilla", nombreArdilla);
+                intent.putExtra("numeroPuntos", numeroPuntos);
                 startActivity(intent);
             }
         });

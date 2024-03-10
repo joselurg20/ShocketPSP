@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.socketpsp.Menu;
+
 public class Tienda extends AppCompatActivity {
 
     private Button btnBack;
@@ -20,7 +22,10 @@ public class Tienda extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Devolver los datos de la ardilla a la actividad 'Menu'
                 Intent intent = new Intent(Tienda.this, Menu.class);
+                intent.putExtra("nombreArdilla", getIntent().getStringExtra("nombreArdilla"));
+                intent.putExtra("numeroPuntos", getIntent().getIntExtra("numeroPuntos", 0));
                 startActivity(intent);
             }
         });
